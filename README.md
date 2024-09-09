@@ -38,4 +38,101 @@ OpenLane is a complete toolchain used for physical design in digital VLSI circui
 
 ![PADS](https://github.com/user-attachments/assets/6b7b21ed-ae98-4c01-8559-12a9d8e2917f)
 
+The PicoRV32 is a compact and efficient open-source implementation of a 32-bit RISC-V CPU, designed primarily for use in FPGAs (Field Programmable Gate Arrays) and other resource-constrained environments. It is fully compliant with the RISC-V RV32IMC instruction set architecture, which supports 32-bit instructions, integer arithmetic, multiplication/division, and compressed instructions (reduced-length instructions for improved code density).
+
+The core is highly optimized for small area usage and low resource consumption, making it suitable for tasks where minimal power and resources are available.
+
+# _ASIC Design Flow Overview_
+
+![image](https://github.com/user-attachments/assets/abe34205-3877-47b0-832d-12a1ab76d5fb)
+
+1. _Register Transfer Level (RTL)_
+   
+  a. Starting Point:
+        The design is described using a high-level hardware description language like Verilog or VHDL.
+   
+  b. Function:
+        The RTL describes how data flows between registers and how the logic components operate within the design.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. _Synthesis (Synth)_
+
+    ![image](https://github.com/user-attachments/assets/d99c5088-c1b4-478f-964f-d72baad3b15e)
+
+Input: RTL description.
+Output: Gate-level netlist.
+Process:
+The synthesis tool converts the RTL design into a gate-level netlist, consisting of logic gates and flip-flops.
+The netlist is technology-mapped to the specific standard cells from the technology library (provided by the PDK, or Process Design Kit).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. _Floor Planning + Power Planning (FP + PP)_
+
+   ![image](https://github.com/user-attachments/assets/ae647052-a92e-41ae-907c-df12c1688e96)
+  
+Input: Gate-level netlist.
+Process:
+This stage defines the physical layout of the design on the chip, positioning key blocks, I/O pins, and the power distribution network.
+Power planning ensures that every part of the design receives sufficient power for proper operation.
+
+ ![image](https://github.com/user-attachments/assets/fcbcf920-80af-4975-a903-67e50599234c)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. _Placement (Place)_
+
+![image](https://github.com/user-attachments/assets/1a18556f-1644-417b-8dc7-5ccf8199f9a7)
+
+Input: Gate-level netlist and floorplan.
+Process:
+Placement tools arrange the logic gates and flip-flops into specific physical locations on the chip.
+
+The goal is to minimize chip area, reduce wire lengths, and meet timing constraints.
+
+Placement is performed in two stages: Global Placement (where cells may overlap) and Detailed Placement (where cells are optimally placed following placement rules).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. _Clock Tree Synthesis (CTS)_
+
+   ![image](https://github.com/user-attachments/assets/17cce477-4879-4390-b546-4894ce7cee53)
+
+Process:
+A clock tree is synthesized to distribute the clock signal uniformly across the chip.
+This ensures that all flip-flops receive the clock signal simultaneously, avoiding clock skew issues and ensuring timing synchronization.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. _Routing (Route)_
+   
+   ![image](https://github.com/user-attachments/assets/d226d089-6630-4d92-a832-dd21ea67158c)
+
+Process:
+Routing tools connect the placed gates using metal wires based on the netlist.
+This step must follow design rules, optimize performance, and address signal integrity concerns like crosstalk and electromagnetic interference.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7. _Sign-off_
+   
+Process:
+Sign-off is the final verification stage before the design goes to manufacturing. This includes:
+a. Timing closure: Ensuring the design meets timing constraints.
+
+b. Power analysis: Verifying that the power distribution is sufficient.
+
+c. Signal integrity checks: Checking for issues like crosstalk and electromigration.
+
+Only once the design passes all these checks can it proceed to fabrication.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8. _GDSII (Graphic Data System II)_
+Output:
+The final step produces the GDSII file, which contains the full physical layout of the chip.
+This file is sent to the semiconductor foundry for fabrication.
+
+
 
