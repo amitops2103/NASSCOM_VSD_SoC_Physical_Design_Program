@@ -135,7 +135,7 @@ The final step produces the GDSII file, which contains the full physical layout 
 This file is sent to the semiconductor foundry for fabrication.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---
-Day 1 Labs : Design setup
+Day 1 Lab : Design setup
 ---
      cd Desktop/work/tool/openlane_directory/openlane
      docker
