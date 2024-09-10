@@ -133,6 +133,28 @@ Only once the design passes all these checks can it proceed to fabrication.
 Output:
 The final step produces the GDSII file, which contains the full physical layout of the chip.
 This file is sent to the semiconductor foundry for fabrication.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+Day 1 Labs : Design setup
+---
+     cd Desktop/work/tool/openlane_directory/openlane
+     docker
+     ./flow.tcl -interactive
+     
 
+ ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/1.jpg)
 
+     prep -design picorv32a
+![prep](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/2.jpg)
 
+     run_synthesis 
+
+     
+ ## Results
+ ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/3.jpg)
+ ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/4.jpg)
+
+ 
+     Flop Ratio 
+ ![flop_ratio](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/5.jpg)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
