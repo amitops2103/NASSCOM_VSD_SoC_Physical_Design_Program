@@ -158,3 +158,4 @@ Day 1 Lab : Design setup
      Flop Ratio 
  ![flop_ratio](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/5.jpg)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## DAY-2: Floorplaning and routing
