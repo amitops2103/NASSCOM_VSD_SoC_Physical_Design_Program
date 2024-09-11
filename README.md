@@ -42,102 +42,12 @@ The PicoRV32 is a compact and efficient open-source implementation of a 32-bit R
 
 The core is highly optimized for small area usage and low resource consumption, making it suitable for tasks where minimal power and resources are available.
 
-# _ASIC Design Flow Overview_
 
-![image](https://github.com/user-attachments/assets/abe34205-3877-47b0-832d-12a1ab76d5fb)
-
-1. _Register Transfer Level (RTL)_
-   
-  a. Starting Point:
-        The design is described using a high-level hardware description language like Verilog or VHDL.
-   
-  b. Function:
-        The RTL describes how data flows between registers and how the logic components operate within the design.
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2. _Synthesis (Synth)_
-
-    ![image](https://github.com/user-attachments/assets/d99c5088-c1b4-478f-964f-d72baad3b15e)
-
-Input: RTL description.
-Output: Gate-level netlist.
-Process:
-The synthesis tool converts the RTL design into a gate-level netlist, consisting of logic gates and flip-flops.
-The netlist is technology-mapped to the specific standard cells from the technology library (provided by the PDK, or Process Design Kit).
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-3. _Floor Planning + Power Planning (FP + PP)_
-
-   ![image](https://github.com/user-attachments/assets/ae647052-a92e-41ae-907c-df12c1688e96)
-  
-Input: Gate-level netlist.
-Process:
-This stage defines the physical layout of the design on the chip, positioning key blocks, I/O pins, and the power distribution network.
-Power planning ensures that every part of the design receives sufficient power for proper operation.
-
- ![image](https://github.com/user-attachments/assets/fcbcf920-80af-4975-a903-67e50599234c)
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-4. _Placement (Place)_
-
-![image](https://github.com/user-attachments/assets/1a18556f-1644-417b-8dc7-5ccf8199f9a7)
-
-Input: Gate-level netlist and floorplan.
-Process:
-Placement tools arrange the logic gates and flip-flops into specific physical locations on the chip.
-
-The goal is to minimize chip area, reduce wire lengths, and meet timing constraints.
-
-Placement is performed in two stages: Global Placement (where cells may overlap) and Detailed Placement (where cells are optimally placed following placement rules).
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-5. _Clock Tree Synthesis (CTS)_
-
-   ![image](https://github.com/user-attachments/assets/17cce477-4879-4390-b546-4894ce7cee53)
-
-Process:
-A clock tree is synthesized to distribute the clock signal uniformly across the chip.
-This ensures that all flip-flops receive the clock signal simultaneously, avoiding clock skew issues and ensuring timing synchronization.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-6. _Routing (Route)_
-   
-   ![image](https://github.com/user-attachments/assets/d226d089-6630-4d92-a832-dd21ea67158c)
-
-Process:
-Routing tools connect the placed gates using metal wires based on the netlist.
-This step must follow design rules, optimize performance, and address signal integrity concerns like crosstalk and electromagnetic interference.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-7. _Sign-off_
-   
-Process:
-Sign-off is the final verification stage before the design goes to manufacturing. This includes:
-a. Timing closure: Ensuring the design meets timing constraints.
-
-b. Power analysis: Verifying that the power distribution is sufficient.
-
-c. Signal integrity checks: Checking for issues like crosstalk and electromigration.
-
-Only once the design passes all these checks can it proceed to fabrication.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-8. _GDSII (Graphic Data System II)_
-Output:
-The final step produces the GDSII file, which contains the full physical layout of the chip.
-This file is sent to the semiconductor foundry for fabrication.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---
 Day 1 Lab : Design setup
 ---
-     cd Desktop/work/tool/openlane_directory/openlane
+     cd Desktop/work/tool/openlane_working_dir/openlane
      docker
      ./flow.tcl -interactive
      
@@ -158,4 +68,65 @@ Day 1 Lab : Design setup
      Flop Ratio 
  ![flop_ratio](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/5.jpg)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## DAY-2: Floorplaning and routing
+## DAY-2: Floorplaning and Placement
+-------
+
+     cd Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a
+     less config.tcl
+
+ ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/1.jpg)
+ 
+### Floorplan
+---
+FP_IO_VMETAL
+
+FP_IO_HMETAL
+     
+     run_floorplan
+     cd Desktop/work/tool/openlane_working_dir/openlane/configuration
+
+ ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/2.jpg)
+
+     cd Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a/08-09_14-03/results/floorplan
+     magic -T /home/vsduser/Desktop/work/tool/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+
+![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/3.jpg)
+
+#### Metal 3 cell
+
+![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/4.jpg)
+
+![5](https://github.com/user-attachments/assets/e4a257c8-417f-4ce2-a290-2d6c80f428be)
+
+#### Metal 2 cell
+
+![6](https://github.com/user-attachments/assets/83ce0a91-05d5-4ef6-9251-34ddf31ede8e)
+
+#### Buffer cell
+
+![7](https://github.com/user-attachments/assets/be237344-783e-4361-9de5-585d2dba2ea2)
+
+#### Nand cell
+
+![8](https://github.com/user-attachments/assets/160a6dc8-94ec-4d7b-9089-f7a748c2342a)
+
+#### Decoupling capacitor cell
+
+![9](https://github.com/user-attachments/assets/a2a0c1de-2131-4896-ba88-6f7f0880c7a9)
+
+#### tapvpwrvgnd cell
+
+![10](https://github.com/user-attachments/assets/59c77607-8642-4b41-97ca-15ba69c5eb1d)
+
+### Placement
+----
+     run_placement
+     
+![11](https://github.com/user-attachments/assets/51fb28b6-e45d-44e9-a96a-b28121b7a9b8)
+
+    magic -T /home/vsduser/Desktop/work/tool/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+![12](https://github.com/user-attachments/assets/23808baf-79c9-4e62-ac63-85ada34e4a64)
+
+![13](https://github.com/user-attachments/assets/5fa6a635-0a2e-4ea4-916a-8d3608cc6ff9)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
