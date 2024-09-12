@@ -184,3 +184,82 @@ Copying magic tech file to vsdstdcelldesign
 #### Opening SPICE extracted file
 
      vim sky130_inv.spice
+
+![12](https://github.com/user-attachments/assets/73fbe2fd-0b86-4895-82b2-d943b22a4560)
+
+     ngspice sky130_inv.spice
+     plot y vs time a
+
+![13](https://github.com/user-attachments/assets/dc06ac51-dbb0-4038-827c-a0cbc252540d)
+
+### Rise time calculation
+
+     Rise Time = T(80%)−T(20%)
+
+80 Percent of 3.3V = 2.64
+![14](https://github.com/user-attachments/assets/6e2b813d-f696-4d6a-a3b0-2790739ec83f)
+
+20 Percent of 3.3V = 0.660
+![15](https://github.com/user-attachments/assets/9c909dbe-1281-43b6-bd02-da5b7cce9382)
+
+     Rise Time = 0.05933ns
+
+![16](https://github.com/user-attachments/assets/67595219-9a9a-4332-b095-e2fa5bcc9959)
+
+### Fall time calculation
+
+     Fall Time = T(80%)−T(20%)
+
+80 Percent of 3.3V = 2.64
+![17](https://github.com/user-attachments/assets/11493042-6172-420d-ba42-43fd84ebba2a)
+
+20 Percent of 3.3V = 0.660
+![18](https://github.com/user-attachments/assets/57f6ea36-6e06-4543-a1ca-fb08abe41ec1)
+
+      Fall Time = 0.02999ns
+
+![19](https://github.com/user-attachments/assets/7a3ae80e-c760-4498-89c1-84db49b6f60c)
+
+### Rise propagation delay calculation
+
+     Rise Delay= Tout(50%)​ − Tin(50%)​
+
+50 Percent of 3.3V = 1.65
+![20](https://github.com/user-attachments/assets/2d53baad-6cc2-4319-bb0a-4f15f00050e7)
+
+     Rise propagation delay = 0.05639ns
+
+![21](https://github.com/user-attachments/assets/e6244a87-a026-4ba5-a9f3-1f8af3459f07)
+
+### Fall propagation delay calculation
+
+     Fall Delay= Tout(50%)​ − Tin(50%)​
+
+50 Percent of 3.3V = 1.65
+![22](https://github.com/user-attachments/assets/bacaf0e5-4387-4ad1-a4ba-f1dde6a1af3f)
+
+     Fall propagation delay = 0.0248ns
+
+![23](https://github.com/user-attachments/assets/768545b5-d173-4d85-ba5c-d498691875b4)
+---------------------------------------------------------------------------------------
+## Introduction to magic tool options and steps to load sky130 DRC rules
+---------------------------------------------------------------------------------------
+
+#### Lab introduction to Magic and steps to load Sky130 tech-rules
+
+     wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+     tar xfz drc_tests.tgz
+     cd drc_tests
+
+![24](https://github.com/user-attachments/assets/497d1793-2041-433a-933e-ca7ff802c6b0)
+To view .magicrc file
+
+     gvim .magicrc
+
+![25](https://github.com/user-attachments/assets/974b6083-bbb5-4b6e-84cb-f29f090acca8)
+
+    
+     
+     
+
+ 
