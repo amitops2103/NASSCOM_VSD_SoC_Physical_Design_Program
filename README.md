@@ -68,7 +68,7 @@ Day 1 Lab : Design setup
      Flop Ratio 
  ![flop_ratio](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/5.jpg)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## DAY-2: Floorplaning and Placement
+## DAY-2 lab: Floorplaning and Placement
 -------
 
      cd Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a
@@ -130,3 +130,57 @@ FP_IO_HMETAL
 
 ![13](https://github.com/user-attachments/assets/5fa6a635-0a2e-4ea4-916a-8d3608cc6ff9)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## DAY-3 lab: Designing Library cell and ngSPICE characterization
+------
+Cloning custom inverter standard cell design from github repository
+
+     git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+
+![1](https://github.com/user-attachments/assets/f69fde04-12a3-4e64-89a2-11a18a8aacf9)
+
+Copying magic tech file to vsdstdcelldesign
+         
+     cp sky130A.tech /home/vsduser/Desktop/work/tool/openlane_working_dir/openplane/vsdstdcelldesign
+
+![2](https://github.com/user-attachments/assets/5d3fb2c9-0070-4b68-af51-38366e0fcb84)
+
+![3](https://github.com/user-attachments/assets/0f15a8bb-8e4d-43d0-8628-06f7287009a3)
+
+#### custom CMOS inverter in magic tool
+
+![4](https://github.com/user-attachments/assets/a57020e7-006f-48d2-b32b-723ff7e3ed83)
+
+#### N-MOS in custom CMOS inverter in magic tool
+   
+![5](https://github.com/user-attachments/assets/a417eb67-3906-453b-b3d4-b6c8620416f8)
+
+#### P-MOS in custom CMOS inverter in magic tool
+
+![6](https://github.com/user-attachments/assets/08567d86-2d2c-401f-91d2-c8d7aff5b146)
+
+#### "A" is attached to locali in cell def sky130_inv
+
+![7](https://github.com/user-attachments/assets/8bcb678f-1bd9-43e9-b2cd-dd827ad71731)
+
+#### "Y" is attached to locali in cell def sky130_inv
+
+![8](https://github.com/user-attachments/assets/edb50725-9717-4597-904e-ad9a89259c1e)
+
+#### Poly-silicon in custom CMOS inverter in magic tool
+
+![9](https://github.com/user-attachments/assets/cd68c041-5be0-400d-99b9-f2f6d6fc2779)
+
+#### Extracting inverter to SPICE characterization
+
+     pwd
+     extract all
+     ext2spice cthresh 0 rthresh 0
+     ext2spice
+
+![10](https://github.com/user-attachments/assets/eb926b01-58dd-4b2f-b79d-607edc053fae)
+
+![11](https://github.com/user-attachments/assets/a3c3ccfb-6cdc-46b2-b740-f4a029890486)
+
+#### Opening SPICE extracted file
+
+     vim sky130_inv.spice
