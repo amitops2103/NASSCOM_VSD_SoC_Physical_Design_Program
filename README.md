@@ -51,22 +51,22 @@ Day 1 Lab : Design setup
      docker
      ./flow.tcl -interactive
      
-
- ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/1.jpg)
+![1](https://github.com/user-attachments/assets/dea31a87-bc5e-4cb4-8d9d-74b6395c2a3c)
 
      prep -design picorv32a
-![prep](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/2.jpg)
+![2](https://github.com/user-attachments/assets/c4fd5377-2af0-477d-834d-1ad1eb027fbc)
 
      run_synthesis 
 
      
  ## Results
- ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/3.jpg)
- ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/4.jpg)
+![3](https://github.com/user-attachments/assets/3578e957-7ae4-4a15-aa70-3855cbaf7d59)
+![4](https://github.com/user-attachments/assets/4cb3e2e6-8723-4cd2-99ff-4148d30bbb9c)
 
  
      Flop Ratio 
- ![flop_ratio](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-1/5.jpg)
+![5](https://github.com/user-attachments/assets/482fdd3f-3e34-4ce7-a378-b3e0061a6ba7)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## DAY-2 lab: Floorplaning and Placement
 -------
@@ -74,8 +74,8 @@ Day 1 Lab : Design setup
      cd Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a
      less config.tcl
 
- ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/1.jpg)
- 
+![1](https://github.com/user-attachments/assets/fefaa220-a714-44c2-aa1e-4b753a0cc6f9)
+
 ### Floorplan
 ---
 FP_IO_VMETAL
@@ -85,16 +85,17 @@ FP_IO_HMETAL
      run_floorplan
      cd Desktop/work/tool/openlane_working_dir/openlane/configuration
 
- ![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/2.jpg)
+![2](https://github.com/user-attachments/assets/c7d2e600-48de-4a26-9aac-879904c138a8)
+
 
      cd Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a/08-09_14-03/results/floorplan
      magic -T /home/vsduser/Desktop/work/tool/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
-![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/3.jpg)
+![3](https://github.com/user-attachments/assets/57f078b4-d4b4-4288-a9bf-b7914f7ac262)
 
 #### Metal 3 cell
 
-![package](https://github.com/amitops2103/NASSCOM_VSD_SoC_Physical_Design_Program/blob/WORKSHOP/DAY-2/4.jpg)
+![4](https://github.com/user-attachments/assets/d7972f4e-acf4-4282-8ae1-5e3a98a6549e)
 
 ![5](https://github.com/user-attachments/assets/e4a257c8-417f-4ce2-a290-2d6c80f428be)
 
@@ -129,6 +130,7 @@ FP_IO_HMETAL
 ![12](https://github.com/user-attachments/assets/23808baf-79c9-4e62-ac63-85ada34e4a64)
 
 ![13](https://github.com/user-attachments/assets/5fa6a635-0a2e-4ea4-916a-8d3608cc6ff9)
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## DAY-3 lab: Designing Library cell and ngSPICE characterization
 ------
@@ -170,7 +172,7 @@ Copying magic tech file to vsdstdcelldesign
 
 ![9](https://github.com/user-attachments/assets/cd68c041-5be0-400d-99b9-f2f6d6fc2779)
 
-#### Extracting inverter to SPICE characterization
+#### Extracting CMOS inverter to SPICE characterization
 
      pwd
      extract all
@@ -186,6 +188,7 @@ Copying magic tech file to vsdstdcelldesign
      vim sky130_inv.spice
 
 ![12](https://github.com/user-attachments/assets/73fbe2fd-0b86-4895-82b2-d943b22a4560)
+Running and ploting the SPICE file
 
      ngspice sky130_inv.spice
      plot y vs time a
@@ -196,10 +199,10 @@ Copying magic tech file to vsdstdcelldesign
 
      Rise Time = T(80%)−T(20%)
 
-80 Percent of 3.3V = 2.64
+80% of 3.3V = 2.64
 ![14](https://github.com/user-attachments/assets/6e2b813d-f696-4d6a-a3b0-2790739ec83f)
 
-20 Percent of 3.3V = 0.660
+20% of 3.3V = 0.660
 ![15](https://github.com/user-attachments/assets/9c909dbe-1281-43b6-bd02-da5b7cce9382)
 
      Rise Time = 0.05933ns
@@ -210,10 +213,10 @@ Copying magic tech file to vsdstdcelldesign
 
      Fall Time = T(80%)−T(20%)
 
-80 Percent of 3.3V = 2.64
+80% of 3.3V = 2.64
 ![17](https://github.com/user-attachments/assets/11493042-6172-420d-ba42-43fd84ebba2a)
 
-20 Percent of 3.3V = 0.660
+20% of 3.3V = 0.660
 ![18](https://github.com/user-attachments/assets/57f6ea36-6e06-4543-a1ca-fb08abe41ec1)
 
       Fall Time = 0.02999ns
@@ -224,7 +227,7 @@ Copying magic tech file to vsdstdcelldesign
 
      Rise Delay= Tout(50%)​ − Tin(50%)​
 
-50 Percent of 3.3V = 1.65
+50% of 3.3V = 1.65
 ![20](https://github.com/user-attachments/assets/2d53baad-6cc2-4319-bb0a-4f15f00050e7)
 
      Rise propagation delay = 0.05639ns
@@ -235,7 +238,7 @@ Copying magic tech file to vsdstdcelldesign
 
      Fall Delay= Tout(50%)​ − Tin(50%)​
 
-50 Percent of 3.3V = 1.65
+50% of 3.3V = 1.65
 ![22](https://github.com/user-attachments/assets/bacaf0e5-4387-4ad1-a4ba-f1dde6a1af3f)
 
      Fall propagation delay = 0.0248ns
