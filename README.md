@@ -266,6 +266,8 @@ Open magic tool
 
 ![26](https://github.com/user-attachments/assets/94d01f56-7c60-4de8-b06b-2f04ec4dd36c)
 
+### DRC check warm-up exercise
+
      load poly
 
 ![27](https://github.com/user-attachments/assets/61b8b14d-6210-441a-93ac-fcdaef594da5)
