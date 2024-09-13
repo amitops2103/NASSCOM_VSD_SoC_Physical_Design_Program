@@ -1,4 +1,4 @@
-# NASSCOM_VSD_SoC_Physical_Design_Program
+![40](https://github.com/user-attachments/assets/058599b1-6cd6-4ce7-ac04-2458a3fc1fd6)# NASSCOM_VSD_SoC_Physical_Design_Program
 Digital VLSI Soc-Physical Design (Picorv32)
 ---
 ## DAY-1: Inception of open-sourcs EDA,OpenLANE and sky130 PDK
@@ -261,6 +261,89 @@ To view .magicrc file
 
 ![25](https://github.com/user-attachments/assets/974b6083-bbb5-4b6e-84cb-f29f090acca8)
 
+Open magic tool
+     
+     magic -d XR &
+
+![26](https://github.com/user-attachments/assets/94d01f56-7c60-4de8-b06b-2f04ec4dd36c)
+
+     load poly
+
+![27](https://github.com/user-attachments/assets/61b8b14d-6210-441a-93ac-fcdaef594da5)
+
+DRC rule for poly.9 in skywater130A pdk
+
+![28](https://github.com/user-attachments/assets/d1bdf337-8665-4e4c-a692-ce9172cf6963)
+
+npolyres
+![29](https://github.com/user-attachments/assets/da0f3792-7185-4647-8be7-e3c97f917222)
+
+poly
+![30](https://github.com/user-attachments/assets/07182c0f-4ff3-4ab7-8cd4-d6275c1d8f70)
+
+xpolyres
+![31](https://github.com/user-attachments/assets/e33153b3-dd3f-4ddc-ac62-6611a4ee1011)
+
+ppolyres
+![32](https://github.com/user-attachments/assets/652b0c95-7f42-4153-9d77-dc85d6e7a18c)
+
+    drc check
+    drc why
+    
+![33](https://github.com/user-attachments/assets/773e3b79-db83-4081-95bc-1aec441ae871)
+![34](https://github.com/user-attachments/assets/c08c3100-e679-436a-9d95-4e0f8ceb4b80)
+![35](https://github.com/user-attachments/assets/7276ec91-8b8b-4aef-badd-6bc48d7a776e)
+
+    vi sky130A.tech
+    
+![36](https://github.com/user-attachments/assets/c55234d1-f1a4-4810-a702-f93852eb635e)
+
+    /drc
+    
+![37](https://github.com/user-attachments/assets/f535d2ee-9659-4632-a5aa-33563fb79296)
+
+    /poly.9
+
+Error-1
+![38](https://github.com/user-attachments/assets/76446670-1388-4302-aaf4-383263a80504)
+
+Error-2
+![39](https://github.com/user-attachments/assets/8a9d3674-b05c-4a6d-adde-4a05af890b29)
+
+Error-2 (fixed)
+![40](https://github.com/user-attachments/assets/3c1eb5b2-112d-4584-b44c-5db01817bba6)
+
+Error-1 (fixed)
+![41](https://github.com/user-attachments/assets/d8b8dda7-1d66-4541-be2e-bf8116eb5e9a)
+
+     tech load sky130A.tech
+     drc check
+     drc why
+     
+![42](https://github.com/user-attachments/assets/50c1e720-0d08-492e-865c-aaa30f391e58)
+
+
+
+
+
+    
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+     
     
      
      
