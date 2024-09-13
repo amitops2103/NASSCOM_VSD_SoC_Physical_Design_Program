@@ -1,4 +1,3 @@
-![40](https://github.com/user-attachments/assets/058599b1-6cd6-4ce7-ac04-2458a3fc1fd6)# NASSCOM_VSD_SoC_Physical_Design_Program
 Digital VLSI Soc-Physical Design (Picorv32)
 ---
 ## DAY-1: Inception of open-sourcs EDA,OpenLANE and sky130 PDK
