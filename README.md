@@ -266,12 +266,13 @@ Open magic tool
 
 ![26](https://github.com/user-attachments/assets/94d01f56-7c60-4de8-b06b-2f04ec4dd36c)
 
-### DRC check warm-up exercise
+### DRC check exercise
 
      load poly
 
 ![27](https://github.com/user-attachments/assets/61b8b14d-6210-441a-93ac-fcdaef594da5)
 
+### poly.9
 DRC rule for poly.9 in skywater130A pdk
 
 ![28](https://github.com/user-attachments/assets/d1bdf337-8665-4e4c-a692-ce9172cf6963)
@@ -323,6 +324,34 @@ Error-1 (fixed)
      
 ![42](https://github.com/user-attachments/assets/50c1e720-0d08-492e-865c-aaa30f391e58)
 
+### Poly.2
+![43](https://github.com/user-attachments/assets/4cad66ad-9491-4a62-94c8-5b65a1cca33f)
+
+DRC rule for poly.2 in skywater130A pdk
+
+![44](https://github.com/user-attachments/assets/c29e3980-ddbc-4589-a17f-c40f36701d11)
+
+Error
+![45](https://github.com/user-attachments/assets/1ec22149-4972-499d-a3dc-b4b85675128b)
+
+Error (fixed)
+![46](https://github.com/user-attachments/assets/af8aefde-ed78-461d-993f-ec3850033e89)
+
+![47](https://github.com/user-attachments/assets/40d99f1c-2297-4b67-a14b-84436785df24)
+
+### nwell.4
+
+![51](https://github.com/user-attachments/assets/ec8c5c63-0e6b-4741-91eb-817208b290b3)
+
+![48](https://github.com/user-attachments/assets/8f587f46-bf1f-4ae0-abc3-4c641f92b587)
+
+![49](https://github.com/user-attachments/assets/d157e05a-6931-4b96-9c36-7d9f8754d5e5)
+
+![50](https://github.com/user-attachments/assets/77be4548-4a8e-489b-b5d2-2baa81ef0150)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## DAY-4 lab:  Pre-layout timing analysis and importance of good clock tree
+------
 
 
 
