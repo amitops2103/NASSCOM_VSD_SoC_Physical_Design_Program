@@ -485,7 +485,7 @@ For reducing slack
 
         sta pre_sta.conf
 
-The slack is (7.14) 
+#### The slack is (7.14) 
 The slack should be greater than or equal to 0
 
        SLACK = (DATA REQUIRED TIME) - (DATA ARIVAL TIME)
