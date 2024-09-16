@@ -471,17 +471,51 @@ For reducing slack
 ![27](https://github.com/user-attachments/assets/93d2c183-680c-44b5-90f1-340233e1a440)
 
 
+##### Create (pre_sta.conf) for STA analysis in openlane directory
+
+![28](https://github.com/user-attachments/assets/5c5aef70-8ab9-44c4-b189-31c6d75e1883)
+
+
+
+#### Create (my_base.sdc) for STA analysis in openlane/designs/picorv32a/src
+
+![29](https://github.com/user-attachments/assets/316797ab-9287-491c-a57c-c1f69323ac14)
+
+#### Output of pre_sta.conf is equal to synthesis stage
+
+        sta pre_sta.conf
+
+The slack is (7.14) 
+The slack should be greater than or equal to 0
+
+       SLACK = (DATA REQUIRED TIME) - (DATA ARIVAL TIME)
+![30](https://github.com/user-attachments/assets/84e1c217-7752-45be-b224-af465924f2c1)
+
+#### Replace the old netlist with the new netlist generated
+
+     write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/08-09_14-03/results/synthesis/picorv32a.synthesis.v
+![31](https://github.com/user-attachments/assets/ccc98e23-bd63-4ae8-8921-456eff788682)
+![32](https://github.com/user-attachments/assets/394fc978-3462-4059-8ee4-beca2bce0fe6)
+
+     run_floorplan
+     run_placement
+![33](https://github.com/user-attachments/assets/94e3b5ca-4b1d-4da1-ad9a-ce4bf7d5e19a)
+
+    run_cts
+![34](https://github.com/user-attachments/assets/768b32ec-4df4-492c-8fbd-eabb4076e22c)
+#### Generated cts file
+
+    /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/08-09_14-03/results/synthesis
+     
+![35](https://github.com/user-attachments/assets/c945f018-930e-401a-9262-f543bc0b001f)
+
+#### After CTS
+
+    openroad
+![36](https://github.com/user-attachments/assets/a1de1324-f3f4-4df7-84ac-eda0dd426d25)
+
+
     
-
-
-
-
-
-
-
-
-
-
 
      
     
