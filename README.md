@@ -370,6 +370,26 @@ Error (fixed)
 ![4](https://github.com/user-attachments/assets/39b31db8-1246-4970-9bb3-56846c2a131f)
 ![5](https://github.com/user-attachments/assets/92cf19a5-9573-4d2a-8999-5bc290f5eb09)
 
+     Requirement_2: Width of the standard cell must be odd multiple of the Xpitch.
+
+![6](https://github.com/user-attachments/assets/c1dc034b-1292-42dd-8ffb-b2fa9a1e09f3)
+
+     Requriement_3: Hight of the standard cell must be even multiple of the Ypitch
+
+![7](https://github.com/user-attachments/assets/f756f815-1e44-461f-bb05-8b59d486e19f)
+
+#### Create port definition
+
+![8](https://github.com/user-attachments/assets/fdb239f1-2925-44a1-a741-4e34eba6f956)
+![9](https://github.com/user-attachments/assets/737d3d20-c0a7-416a-a90f-5e15ba0c018a)
+![10](https://github.com/user-attachments/assets/332554c3-46b6-464d-9371-2025fd63a811)
+
+#### Set port class and port use
+
+![11](https://github.com/user-attachments/assets/f95edc79-9559-404e-9964-4e7e9b6c1883)
+
+
+
 
 
     
