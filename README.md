@@ -388,6 +388,11 @@ Error (fixed)
 
 ![11](https://github.com/user-attachments/assets/f95edc79-9559-404e-9964-4e7e9b6c1883)
 
+#### Creating LEF file with same custom file name
+
+![12](https://github.com/user-attachments/assets/6facf49a-d20d-4a0c-a461-d6a48e6140a7)
+![13](https://github.com/user-attachments/assets/c207d702-ec31-49d3-8a23-67bcfed333fa)
+![14](https://github.com/user-attachments/assets/ea5c43fa-e9b9-411d-b184-e10c41313a60)
 
 
 
