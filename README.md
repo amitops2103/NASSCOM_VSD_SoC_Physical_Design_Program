@@ -421,16 +421,55 @@ copying sky130_fd_sc_hd_*.lib file from (openlane/vsdstdcelldesign/libs) to (pic
 
 ![19](https://github.com/user-attachments/assets/408b27bd-26c4-437b-bd9d-4fcf081ab9a5)
 
+### Plugging custom LEF to openlane flow
 
+     docker
+     ./flow.tcl -interactive
+	package require openlane 0.9
+     prep -design picorv32a -tag 08-09_14-03 -overwrite
+     run_synthsis
     
+![20](https://github.com/user-attachments/assets/b7815f57-bca7-4607-8f3d-f5c70a2be063)
 
+     total negative slack (tns) = -711.59
+     wrost negative slack (wns0 = -23.89
+
+![21](https://github.com/user-attachments/assets/7fec6dee-3346-4ab8-9a1e-f24663cfdee5)
+
+For reducing slack
      
+     set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+     add_lefs -src $lefs
+     echo $::env(SYNTH_STRATEGY)
+     set ::env(SYNTH_STRATEGY) "DELAY 1"
+	echo $::env(SYNTH_BUFFERING)
+ 	echo $::env(SYNTH_SIZING)
+  	set ::env(SYNTH_SIZING) 1
+     echo $::env(SYNTH_DRIVING_CELL)
 
+![22](https://github.com/user-attachments/assets/ac1cef8f-c4a5-4cf9-86c7-a0b80b8fc308)
+![23](https://github.com/user-attachments/assets/db970470-0add-43c1-9fec-e2777fad2a62)
 
-    
+     total negative slack (tns) = 0.00
+     wrost negative slack (wns0 = 0.00
 
+----------
 
-    
+     run_floorplan
+     run_placement
+
+![24](https://github.com/user-attachments/assets/df106764-9690-4a6b-9b71-ef0ac7dfed0f)
+
+      magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+![25](https://github.com/user-attachments/assets/845bb609-a40a-4eb5-92e7-2d8e870e4766)
+#### Expanding sky130_vsdinv custom block
+      
+       % expand
+
+![26](https://github.com/user-attachments/assets/f444155c-3006-4a0e-b97c-7bca5a66decc)
+![27](https://github.com/user-attachments/assets/93d2c183-680c-44b5-90f1-340233e1a440)
+
 
     
 
