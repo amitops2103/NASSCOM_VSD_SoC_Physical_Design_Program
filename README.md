@@ -390,11 +390,30 @@ Error (fixed)
 
 #### Creating LEF file with same custom file name
 
+     % write lef
+
 ![12](https://github.com/user-attachments/assets/6facf49a-d20d-4a0c-a461-d6a48e6140a7)
 ![13](https://github.com/user-attachments/assets/c207d702-ec31-49d3-8a23-67bcfed333fa)
 ![14](https://github.com/user-attachments/assets/ea5c43fa-e9b9-411d-b184-e10c41313a60)
 
+copying sky130_vsdinv.lef from (openlane/vsdstdcelldesign) to (picorv32a/src)
 
+     cp sky130_vsdinv.lef /home/Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a/src
+
+![15](https://github.com/user-attachments/assets/67ad7654-4b40-4b9f-9982-c901b826c874)
+![16](https://github.com/user-attachments/assets/dbf2cec3-22c9-419e-84c7-2386a52935f3)
+
+copying sky130_fd_sc_hd_*.lib file from (openlane/vsdstdcelldesign/libs) to (picorv32a/src)
+
+    cp sky130_fd_sc_hd_* /home/Desktop/work/tool/openlane_working_dir/openlane/designs/picorv32a/src
+
+![17](https://github.com/user-attachments/assets/879abefb-0541-4191-8fe9-f448cedb2cb2)
+![18](https://github.com/user-attachments/assets/dfb7ad82-0119-4078-b744-73a39aabce0b)
+
+
+    
+
+     
 
 
     
