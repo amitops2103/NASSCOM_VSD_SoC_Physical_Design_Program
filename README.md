@@ -491,7 +491,7 @@ The slack should be greater than or equal to 0
        SLACK = (DATA REQUIRED TIME) - (DATA ARIVAL TIME)
 ![30](https://github.com/user-attachments/assets/84e1c217-7752-45be-b224-af465924f2c1)
 
-#### Replace the old netlist with the new netlist generated
+#### Replace the old netlist with the newly generated netlist 
 
      write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/08-09_14-03/results/synthesis/picorv32a.synthesis.v
 ![31](https://github.com/user-attachments/assets/ccc98e23-bd63-4ae8-8921-456eff788682)
