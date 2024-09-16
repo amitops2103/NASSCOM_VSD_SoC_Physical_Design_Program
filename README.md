@@ -410,6 +410,17 @@ copying sky130_fd_sc_hd_*.lib file from (openlane/vsdstdcelldesign/libs) to (pic
 ![17](https://github.com/user-attachments/assets/879abefb-0541-4191-8fe9-f448cedb2cb2)
 ![18](https://github.com/user-attachments/assets/dfb7ad82-0119-4078-b744-73a39aabce0b)
 
+#### Editing (config.tcl)
+
+    set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+    set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+    set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+    set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+    set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+![19](https://github.com/user-attachments/assets/408b27bd-26c4-437b-bd9d-4fcf081ab9a5)
+
 
     
 
