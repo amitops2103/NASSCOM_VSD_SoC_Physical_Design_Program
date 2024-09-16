@@ -425,7 +425,7 @@ copying sky130_fd_sc_hd_*.lib file from (openlane/vsdstdcelldesign/libs) to (pic
 
      docker
      ./flow.tcl -interactive
-	package require openlane 0.9
+     package require openlane 0.9
      prep -design picorv32a -tag 08-09_14-03 -overwrite
      run_synthsis
     
@@ -442,9 +442,9 @@ For reducing slack
      add_lefs -src $lefs
      echo $::env(SYNTH_STRATEGY)
      set ::env(SYNTH_STRATEGY) "DELAY 1"
-	echo $::env(SYNTH_BUFFERING)
- 	echo $::env(SYNTH_SIZING)
-  	set ::env(SYNTH_SIZING) 1
+     echo $::env(SYNTH_BUFFERING)
+     echo $::env(SYNTH_SIZING)
+     set ::env(SYNTH_SIZING) 1
      echo $::env(SYNTH_DRIVING_CELL)
 
 ![22](https://github.com/user-attachments/assets/ac1cef8f-c4a5-4cf9-86c7-a0b80b8fc308)
@@ -509,17 +509,63 @@ The slack should be greater than or equal to 0
      
 ![35](https://github.com/user-attachments/assets/c945f018-930e-401a-9262-f543bc0b001f)
 
-#### After CTS
+#### Post-CTS timing analysis using OpenROAD
 
     openroad
 ![36](https://github.com/user-attachments/assets/a1de1324-f3f4-4df7-84ac-eda0dd426d25)
 
+    read_lef /openLANE_flow/designs/picorv32a/runs/08-09_14-03/tmp/merged.lef
+    read_def /openLANE_flow/designs/picorv32a/runs/08-09_14-03/results/cts/picorv32a.cts.def
+    write_db pico_cts.db
+    read_db pico_cts.db
+    read_verilog /openLANE_flow/designs/picorv32a/runs/08-09_14-03/results/synthesis/picorv32a.synthesis_cts.v
+    read_liberty $::env(LIB_SYNTH_COMPLETE)
+    link_design picorv32a
+    read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+    set_propagated_clock [all_clocks]
+    report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+![37](https://github.com/user-attachments/assets/271257af-4300-48bd-ab2d-572d98a099c2)
+![38](https://github.com/user-attachments/assets/539d4f47-568f-431d-9ff2-5542b85648bc)
 
-    
+####  Post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+    exit
+    echo $::env(CTS_CLK_BUFFER_LIST)
+    set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+    echo $::env(CTS_CLK_BUFFER_LIST)
+![39](https://github.com/user-attachments/assets/8703e6eb-61be-4f5a-b8e6-7bcc241ea174)
 
-     
-    
-     
-     
+    echo $::env(CURRENT_DEF)
+    set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/08-09_14-03/results/placement/picorv32a.placement.def
+![40](https://github.com/user-attachments/assets/ccd250db-c834-4fd1-b0ce-de987fc38b65)
 
- 
+    run_cts
+![41](https://github.com/user-attachments/assets/6e91d29c-8339-4453-830d-9847f9f3ffd1)
+![42](https://github.com/user-attachments/assets/c2ddfda3-1be7-4b5c-af62-1e1ce71a4489)
+
+    echo $::env(CTS_CLK_BUFFER_LIST)
+    openroad
+    read_lef /openLANE_flow/designs/picorv32a/runs/08-09_14-03/tmp/merged.lef
+    write_db pico_cts.db
+    read_db pico_cts.db
+    read_verilog /openLANE_flow/designs/picorv32a/runs/08-09_14-03/results/synthesis/picorv32a.synthesis_cts.v
+    read_liberty $::env(LIB_SYNTH_COMPLETE)
+    link_design picorv32a
+    read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+    set_propagated_clock [all_clocks]
+    report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+![43](https://github.com/user-attachments/assets/ff5ea9aa-e56e-4154-af80-f08a41b8d412)
+![44](https://github.com/user-attachments/assets/182e38ca-aabf-42c6-808d-203ee40fea7f)
+![45](https://github.com/user-attachments/assets/6160a727-8628-4290-a372-e952b6e3d3fb)
+
+    report_clock_skew -hold
+    report_clock_skew -setup
+![46](https://github.com/user-attachments/assets/a535e973-1585-400e-8249-ba4f3348526a)
+
+    echo $::env(CTS_CLK_BUFFER_LIST)
+    set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+    echo $::env(CTS_CLK_BUFFER_LIST)
+![47](https://github.com/user-attachments/assets/503945e9-4016-420d-8382-71791f22dfe7)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## DAY-5 lab: Final steps for RTL2GDS using tritonRoute and openSTA
+-----------------------------------------
