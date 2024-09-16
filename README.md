@@ -352,7 +352,23 @@ Error (fixed)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## DAY-4 lab:  Pre-layout timing analysis and importance of good clock tree
 ------
+#### Open CMOS -inverter layout using magic tool
+![1](https://github.com/user-attachments/assets/58e2c7b0-e281-409f-afab-359cac66b929)
 
+     press g on the layout for the grid formate
+
+![3](https://github.com/user-attachments/assets/47cbb07b-2797-4d5c-a2a3-c7e7e126c27d)
+
+#### Generation of LEF file from layout
+
+     Requirment_1.The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+
+![2](https://github.com/user-attachments/assets/54855ed5-a7da-4e28-8ee4-100c9415ed9f)
+
+     % grid 0.46um 0.34um 0.23um 0.17um
+
+![4](https://github.com/user-attachments/assets/39b31db8-1246-4970-9bb3-56846c2a131f)
+![5](https://github.com/user-attachments/assets/92cf19a5-9573-4d2a-8999-5bc290f5eb09)
 
 
 
