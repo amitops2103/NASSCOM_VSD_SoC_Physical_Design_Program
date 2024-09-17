@@ -569,3 +569,74 @@ The slack should be greater than or equal to 0
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## DAY-5 lab: Final steps for RTL2GDS using tritonRoute and openSTA
 -----------------------------------------
+
+
+### Power distibution network
+
+    docker
+    ./flow.tcl -interactive
+    package require openlane 0.9
+    prep -design picorv32a
+    set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+    add_lefs -src $lefs
+    set ::env(SYNTH_STRATEGY) "DELAY 1"
+    set ::env(SYNTH_SIZING) 1
+    run_synthesis
+    init_floorplan
+    place_io
+    tap_decap_or
+    run_placement
+    run_cts
+    gen_pdn
+![1](https://github.com/user-attachments/assets/52ca21c4-ea3f-46c6-abef-a0789b0d6725)
+![2](https://github.com/user-attachments/assets/c717a380-69f0-4e34-a608-1890746fb333)
+![3](https://github.com/user-attachments/assets/e6913132-337d-4167-a729-e2446d459a46)
+
+#### Load PDN def in magic
+
+     cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-11/tmp/floorplan/
+     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+![4](https://github.com/user-attachments/assets/19ca15bc-0270-4527-a45c-ae7eded54a3d)
+![5](https://github.com/user-attachments/assets/aef6a522-2c2b-43fb-977f-0ed762c22e60)
+![6](https://github.com/user-attachments/assets/48493ca4-fd14-4f64-871c-5b6c9e88010b)
+![7](https://github.com/user-attachments/assets/2125a9be-9102-4a26-a56b-abd0e7e132ec)
+
+### Routing
+
+    echo $::env(CURRENT_DEF)
+    echo $::env(ROUTING_STRATEGY)
+    run_routing
+![8](https://github.com/user-attachments/assets/455ab94e-e056-4192-8cf8-70deea92b5e8)
+
+0th optimization
+![9](https://github.com/user-attachments/assets/a5792ec5-b722-46a7-8c8c-ae2596000c96)
+
+57th optimization
+![10](https://github.com/user-attachments/assets/7e2051a9-1973-4ce1-8659-1ab9aaaceba2)
+![11](https://github.com/user-attachments/assets/e34be66f-44cd-4006-9ddf-808e32762fac)
+
+#### fast route guide
+
+      openlane/designs/picorv32a/runs/17-09_05-11/tmp/routing
+      less 15-fastroute.guide
+![12](https://github.com/user-attachments/assets/02abfa81-a38c-4fe4-8ece-5754afe5e3ee)
+
+
+####  Post-Route parasitic extraction using SPEF extractor
+
+      cd Desktop/work/tools/SPEF_EXTRACTOR
+      python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-11/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-11/results/routing/picorv32a.def
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      
+
+
+
+
+
+
+
+
+
+    
