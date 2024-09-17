@@ -615,6 +615,14 @@ The slack should be greater than or equal to 0
 ![10](https://github.com/user-attachments/assets/7e2051a9-1973-4ce1-8659-1ab9aaaceba2)
 ![11](https://github.com/user-attachments/assets/e34be66f-44cd-4006-9ddf-808e32762fac)
 
+#### Commands to load routed def in magic in another terminal
+
+      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-011/results/routing/
+      magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+![13](https://github.com/user-attachments/assets/3a926ceb-a3c7-4409-ab13-b0b2dd79c341)
+![14](https://github.com/user-attachments/assets/15a53c43-1a23-4bdc-a6ac-0ed2c6b9a46c)
+![15](https://github.com/user-attachments/assets/84499f77-916e-4494-a25e-331eff24977b)
+
 #### fast route guide
 
       openlane/designs/picorv32a/runs/17-09_05-11/tmp/routing
@@ -626,6 +634,39 @@ The slack should be greater than or equal to 0
 
       cd Desktop/work/tools/SPEF_EXTRACTOR
       python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-11/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-09_05-11/results/routing/picorv32a.def
+
+### Post-Route OpenSTA timing analysis with the extracted parasitics
+
+    docker
+    ./flow.tcl -interactive
+    package require openlane 0.9
+    prep -design picorv32a -tag 17-09_05-11
+
+    openroad
+    read_lef /openLANE_flow/designs/picorv32a/runs/17-09_05-07/tmp/merged.lef
+    read_def /openLANE_flow/designs/picorv32a/runs/17-09_05-07/results/routing/picorv32a.def
+    write_db pico_route.db
+    read_db pico_route.db
+    read_verilog /openLANE_flow/designs/picorv32a/runs/17-09_05-07/results/synthesis/picorv32a.synthesis_preroute.v
+    read_liberty $::env(LIB_SYNTH_COMPLETE)
+    link_design picorv32a
+    read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+    set_propagated_clock [all_clocks]
+    read_spef /openLANE_flow/designs/picorv32a/runs/17-09_05-07/results/routing/picorv32a.spef
+    report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+    exit
+
+![16](https://github.com/user-attachments/assets/33d00311-1d95-4fce-8b35-065d531b2d02)
+![17](https://github.com/user-attachments/assets/25b6b638-b7fb-4321-8820-4877b04d7ba4)
+![18](https://github.com/user-attachments/assets/6e3d287d-33aa-43c6-bb09-52ae92f0ec9e)
+
+
+
+
+    
+    
+
+      
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
